@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.composestudy.rengwuxian.HenCoderActivity
 import com.example.composestudy.study.CodeLabActivity
 import com.example.composestudy.study.GotoNextPage
 import com.example.composestudy.study.Greeting
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         Intent(this@MainActivity, CodeLabActivity::class.java).run { startActivity(this) }
     }
 
+    private fun gotoHenCoderPage() {
+        Intent(this@MainActivity, HenCoderActivity::class.java).run { startActivity(this) }
+    }
+
     @Composable
     fun Content() {
         Column(
@@ -42,6 +47,8 @@ class MainActivity : AppCompatActivity() {
             NewsStory()
             Spacer(modifier = Modifier.height(16.dp))
             GotoNextPage(text = "跳转到 CodeLab 页面", goto = ::gotoCodeLabPage)
+            Spacer(modifier = Modifier.height(16.dp))
+            GotoNextPage(text = "跳转到 HenCoder 页面", goto = ::gotoHenCoderPage)
         }
     }
 

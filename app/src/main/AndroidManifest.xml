@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.composestudy">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -22,5 +24,6 @@
         </activity>
 
         <activity android:name=".study.CodeLabActivity" />
+        <activity android:name=".rengwuxian.HenCoderActivity" />
     </application>
 </manifest>
