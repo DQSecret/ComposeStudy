@@ -15,14 +15,22 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import coil.transform.CircleCropTransformation
 import com.example.composestudy.R
+import com.example.composestudy.rengwuxian.widgets.ShowCharCount
 import com.google.accompanist.coil.rememberCoilPainter
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HenCoderActivity : AppCompatActivity() {
 
@@ -97,6 +105,14 @@ class HenCoderActivity : AppCompatActivity() {
             LazyColumn(modifier = Modifier.height(200.dp)) {
                 items(list) { item ->
                     Text(text = item)
+                }
+            }
+            Column(modifier = Modifier.padding(50.dp, 300.dp, 0.dp, 0.dp)) {
+                var name by remember { mutableStateOf("DQ") }
+                ShowCharCount(value = name)
+                lifecycleScope.launch {
+                    delay(3000)
+                    name = "DQDana"
                 }
             }
         }
