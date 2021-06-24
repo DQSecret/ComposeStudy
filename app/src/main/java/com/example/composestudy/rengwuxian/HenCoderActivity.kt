@@ -31,6 +31,7 @@ import coil.transform.CircleCropTransformation
 import com.example.composestudy.R
 import com.example.composestudy.rengwuxian.widgets.ShowCharCount
 import com.example.composestudy.rengwuxian.widgets.TestClick
+import com.example.composestudy.rengwuxian.widgets.TestList
 import com.google.accompanist.coil.rememberCoilPainter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -135,6 +136,7 @@ class HenCoderActivity : AppCompatActivity() {
                     }
                     Column {
                         TestClick()
+                        TestList()
                     }
                 }
             }
