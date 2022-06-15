@@ -4,13 +4,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+
+    compileSdkVersion 32
+    buildToolsVersion "32.0.0"
 
     defaultConfig {
         applicationId "com.example.composestudy"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -23,17 +24,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
         useIR = true
     }
+
     buildFeatures {
         compose true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
     }
@@ -41,14 +46,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0-rc01'
-    implementation 'androidx.activity:activity-ktx:1.3.0-beta02'
-    implementation 'androidx.activity:activity-compose:1.3.0-beta02'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
+    implementation 'androidx.core:core-ktx:1.9.0-alpha04'
+    implementation 'androidx.activity:activity-ktx:1.6.0-alpha04'
+    implementation 'androidx.activity:activity-compose:1.6.0-alpha03'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-rc01'
     implementation "androidx.compose.foundation:foundation:$compose_version"
     implementation "androidx.compose.foundation:foundation-layout:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
@@ -57,8 +62,8 @@ dependencies {
     implementation "androidx.compose.ui:ui-util:$compose_version"
     implementation 'dev.chrisbanes.accompanist:accompanist-insets:0.6.2'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // 图片加载库
     implementation 'com.google.accompanist:accompanist-coil:0.12.0'
