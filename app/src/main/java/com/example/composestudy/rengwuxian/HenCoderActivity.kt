@@ -2,41 +2,46 @@ package com.example.composestudy.rengwuxian
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.lifecycleScope
-import coil.transform.CircleCropTransformation
+import coil.compose.AsyncImage
 import com.example.composestudy.R
 import com.example.composestudy.rengwuxian.widgets.ShowCharCount
 import com.example.composestudy.rengwuxian.widgets.TestClick
 import com.example.composestudy.rengwuxian.widgets.TestList
-import com.google.accompanist.coil.rememberCoilPainter
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
-class HenCoderActivity : AppCompatActivity() {
+class HenCoderActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +59,8 @@ class HenCoderActivity : AppCompatActivity() {
                         modifier = Modifier.size(50.dp)
                     )
                     // 网络图片
-                    Image(
-                        painter = rememberCoilPainter("https://picsum.photos/300/300"),
+                    AsyncImage(
+                        model = "https://picsum.photos/300/300",
                         contentDescription = "网络图片",
                         Modifier.size(50.dp)
                     )
@@ -85,20 +90,15 @@ class HenCoderActivity : AppCompatActivity() {
                                 .background(Color.Green, RoundedCornerShape(8.dp))
                                 .padding(8.dp)
                         )
-                        Image(
-                            painter = rememberCoilPainter(
-                                request = "https://picsum.photos/300/300",
-                                requestBuilder = {
-                                    transformations(CircleCropTransformation())
-                                },
-                                fadeIn = true
-                            ),
+                        AsyncImage(
+                            model = "https://picsum.photos/300/300",
                             contentDescription = "网络图片",
                             modifier = Modifier
-                                // .clip(CircleShape) // 等同于 transformations(CircleCropTransformation())
+                                // .clip(CircleShape)
+                                .clip(RoundedCornerShape(100))
                                 // .fillMaxWidth(0.5f)
                                 .size(50.dp)
-                                .clickable { toast() }
+                                .clickable { toast() },
                         )
                         Button(
                             onClick = { toast() },
@@ -129,7 +129,7 @@ class HenCoderActivity : AppCompatActivity() {
                     Column {
                         var name by remember { mutableStateOf("DQ") }
                         ShowCharCount(value = name)
-                        lifecycleScope.launch {
+                        LaunchedEffect(name) {
                             delay(3000)
                             name = "DQDana"
                         }
